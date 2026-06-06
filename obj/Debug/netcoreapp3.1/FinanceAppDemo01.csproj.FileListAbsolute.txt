@@ -38,3 +38,4 @@ C:\Users\Grant\OneDrive\Desktop\Repos\Visual Studio (VS)\TC Assignments for Subm
 C:\Users\Grant\OneDrive\Desktop\Repos\Visual Studio (VS)\TC Assignments for Submission\FinanceAppDemo01\obj\Debug\netcoreapp3.1\FinanceAppDemo01.pdb
 C:\Users\Grant\OneDrive\Desktop\Repos\Visual Studio (VS)\TC Assignments for Submission\FinanceAppDemo01\obj\Debug\netcoreapp3.1\FinanceAppDemo01.genruntimeconfig.cache
 C:\Users\Grant\OneDrive\Desktop\Repos\Visual Studio (VS)\TC Assignments for Submission\FinanceAppDemo01\obj\Debug\netcoreapp3.1\FinanceA.1DB566EA.Up2Date
+C:\Users\Grant\OneDrive\Desktop\Repos\Visual Studio (VS)\TC Assignments for Submission\FinanceAppDemo01\obj\Debug\netcoreapp3.1\FinanceAppDemo01.sourcelink.json

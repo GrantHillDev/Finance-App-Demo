@@ -1,0 +1,18 @@
+Project Pointers Learned along the Way
+
+> In order to get this website up and running properly with its intended functionality; must load the backend programs first (preferably through Visual Studio Community), and get them running.... then load up the html program via visual studio code and ensure that the live server extension is selected for use.... this makes it easier to see what you're doing as you're working. Loading the html page first still opened a new webpage in the browser, and it could run on its own, but it was connected to the backend port address, and therefore had no connectivity to all of its programming. The webpage still didn't retain its functionality even after it was connected to the backend port address, which was surprising.
+
+> Ensure that whenever there's frontend projects being connected with backend ones, make sure that there's scripting in the appropriate places which tells each project file what the address of the other's port is.... else, they'll never connect with each other.
+
+> There's a probability that when scripting the backend part of a full stack project, when setting up the startup.cs file, it may have already been defaulting to inhibiting any frontend works from being able to connect with what's been crafted on the backend, and there will constructed configuration methods that have been to be defined, but in such a way as to include provisions for enabling frontend access to the backend.... something like as follows; services.AddControllersWithViews();
+
+services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        builder =>
+        {
+            builder.WithOrigins("http://127.0.0.1:5500")
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});

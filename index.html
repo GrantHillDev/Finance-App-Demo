@@ -15,7 +15,12 @@
     <input type="number" id="numberInput" placeholder ="0">
     <button onclick="sendData()">Double It</button>
     <br>
-    <p>Result: <span id="result"></span></p>
+    <p>Result: <span id="doubleResult"></span></p>
+    <br>
+    <label for ="valueInput">Value Input:</label>
+    <input type="number" id="valueInput" placeholder = "0">
+    <button onclick="divideNumber()">Divide It in Half</button><!--it was recommended that I change the name of this function as a matter of knowing exactly what it does in the far future whenever I revissit my programming here.-->
+    <p>Result: <span id="divideResult"></span></p><!--span id's are intended to kept unique -- I made a previous mistake here in the previous block of code above by naming both span ids as the same name.... and I was told that this mistake alone can prevent your webpage from printing what it's supposed to properly.-->
 
     <script src="wwwroot/js/site.js"></script>
 </body>
