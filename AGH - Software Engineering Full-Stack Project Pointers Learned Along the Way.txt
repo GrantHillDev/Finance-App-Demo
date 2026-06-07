@@ -1,4 +1,4 @@
-Project Pointers Learned along the Way
+AGH - Software Engineering Full-Stack Project Pointers Learned along the Way
 
 > In order to get this website up and running properly with its intended functionality; must load the backend programs first (preferably through Visual Studio Community), and get them running.... then load up the html program via visual studio code and ensure that the live server extension is selected for use.... this makes it easier to see what you're doing as you're working. Loading the html page first still opened a new webpage in the browser, and it could run on its own, but it was connected to the backend port address, and therefore had no connectivity to all of its programming. The webpage still didn't retain its functionality even after it was connected to the backend port address, which was surprising.
 
@@ -16,3 +16,6 @@ services.AddCors(options =>
                    .AllowAnyMethod();
         });
 });
+
+> Always make sure that when crafting multiple functions inside of HTML, that if span ids are used, they must all retain different names from each other, or else there may very likely be errors thrown that you won't see or detect at compile time or at runtime.
+

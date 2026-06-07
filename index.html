@@ -10,17 +10,103 @@
     <h>AGH - Finance Demo App #01</h>
     <br>
     <br>
+    <br>
 
+<div>
     <label for ="numberInput">Number Input:</label>
-    <input type="number" id="numberInput" placeholder ="0">
+    <input type="number" id="numberInput" placeholder="0">
     <button onclick="sendData()">Double It</button>
-    <br>
     <p>Result: <span id="doubleResult"></span></p>
+</div>
+
     <br>
+
+<div>
     <label for ="valueInput">Value Input:</label>
-    <input type="number" id="valueInput" placeholder = "0">
-    <button onclick="divideNumber()">Divide It in Half</button><!--it was recommended that I change the name of this function as a matter of knowing exactly what it does in the far future whenever I revissit my programming here.-->
-    <p>Result: <span id="divideResult"></span></p><!--span id's are intended to kept unique -- I made a previous mistake here in the previous block of code above by naming both span ids as the same name.... and I was told that this mistake alone can prevent your webpage from printing what it's supposed to properly.-->
+    <input type="number" id="valueInput" placeholder="0">
+    <button onclick="divideNumber()">Divide It in Half</button><!--it was recommended that I change the name of this function as a matter of knowing exactly what it does in the far future whenever I revisit my programming here.-->
+    <p>Result: <span id="divideResult"></span></p><!--span id's are intended to be kept unique -- I made a previous mistake here in the previous block of code above by naming both span ids as the same name.... and I was told that this mistake alone can prevent your webpage from printing what it's supposed to properly.-->
+</div>
+
+<br>
+
+<div>
+    <label for="homeMarketValue">Pick Your Home's Estimated Market Value: $</label>
+    <input type="number" id="homeMarketValue" placeholder="0" required>
+    <button onclick="submitHomeMarketValue()">Submit Your Home's Estimated Market Value</button>
+    <!--I'm going to have the website collect all of the user's inputs first, and make each aspect of what's required for the mortgage calculator to do its job a mandatory notion for each user input and button submission.<p></p>-->
+</div>
+
+    <br>
+
+<div>
+    <label for="downPayment">How Much Cash You'd Like to Put Down on the Home: $</label>
+    <input type="number" id="downPayment" placeholder="0" required>
+    <button onclick="submitHomeDownPayment()">Submit Your Intended Down Payment</button>
+</div>
+
+    <br>
+
+<div>
+    <label for="loanAmount">What's the Loan Amount: $</label>
+    <input type="number" id="loanAmount" placeholder ="0" required>
+    <button onclick="submitHomeLoanAmount()">Submit Desired Home Loan Amount</button>
+</div>
+
+    <br>
+
+<div>
+    <label for="interestRate">Estimated Interest Rate: %</label>
+    <input type="number" id="interestRate" placeholder="0" required>
+    <button onclick="submitInterestRate()">Submit Interest Rate</button>
+</div>
+
+    <br>
+
+<div>
+    <label for="homeRenovation">Are You Planning on Renovating the Home Around the Time of Purchase:</label>
+    <select id="homeRenovation" name="yN" required>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option><!--Actually, I don't need to have the user's input sent over to the backend for this inquiry.-->
+    </select><!--<input type="string" id="homeRenovation" required>-->
+</div>
+
+    <br>
+
+<div>
+    <label for="loanTerm">What's the Term Length of the Loan: </label>
+    <input type="number" id="loanTerm" placeholder="0" required>Years<!--This works alright if you want to place the unit of measure for the input quantity to the right of the input box, instead of before it, to the left, in the label section.-->
+    <button onclick="submitLoanTerm()">Submit Loan Term</button>
+</div>
+
+    <br>
+
+<div>
+    <label for="loanStartDate">When's the Loan's Start Date:</label>
+    <select id="loanStartDate" name="Month" required>
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+        <option value="December">December</option>
+    </select>
+    <input type="number" id="loanStartDate" placeholder="2026" required>
+</div>
+
+    <br>
+
+<div>
+    <label for="propertyTaxes">Estimated Annual Property Taxes: $</label><!--I'm going to actually make a whole other full stack development project that can be a little more precise with home mmortage related notions and values are actually calculated.... and not just leave them as simple inputs for the user.-->
+    <input type="number" id="propertyTaxes" placeholder="0" required>
+    <button onclick="submitPropertyTaxes()">Submit Estimated Annual Property Taxes</button>
+</div>
 
     <script src="wwwroot/js/site.js"></script>
 </body>
