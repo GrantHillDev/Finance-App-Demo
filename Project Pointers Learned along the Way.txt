@@ -1,0 +1,23 @@
+AGH - Software Engineering Full-Stack Project Pointers Learned Along the Way
+
+> In order to get this website up and running properly with its intended functionality; must load the backend programs first (preferably through Visual Studio Community), and get them running.... then load up the html program via visual studio code and ensure that the live server extension is selected for use.... this makes it easier to see what you're doing as you're working. Loading the html page first still opened a new webpage in the browser, and it could run on its own, but it was connected to the backend port address, and therefore had no connectivity to all of its programming. The webpage still didn't retain its functionality even after it was connected to the backend port address, which was surprising.
+
+> Ensure that whenever there's frontend projects being connected with backend ones, make sure that there's scripting in the appropriate places which tells each project file what the address of the other's port is.... else, they'll never connect with each other.
+
+> There's a probability that when scripting the backend part of a full stack project, when setting up the startup.cs file, it may have already been defaulting to inhibiting any frontend works from being able to connect with what's been crafted on the backend, and there will constructed configuration methods that have been to be defined, but in such a way as to include provisions for enabling frontend access to the backend.... something like as follows; services.AddControllersWithViews();
+
+services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        builder =>
+        {
+            builder.WithOrigins("http://127.0.0.1:5500")
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
+
+> Always make sure that when crafting multiple functions inside of HTML, that if span ids are used, they must all retain different names from each other, or else there may very likely be errors thrown that you won't see or detect at compile time or at runtime.
+
+> When conducting full-stack software engineering based projects, the user interface, or the view (of MVC) will always involve continuous modification or additional programming to at three of its 5 main coding based aspects; HTML, JavaScript, and C# (only the controller). Obviously, CSS could fall into this category as well, but all of this is to suggest that once you've crafted and coded your startup.cs and program.cs files (these represent the configurations on the backend side for the frontend), chances are that they will not need any further modification, since they're already set up.
+

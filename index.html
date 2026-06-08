@@ -28,12 +28,16 @@
     <p>Result: <span id="divideResult"></span></p><!--span id's are intended to be kept unique -- I made a previous mistake here in the previous block of code above by naming both span ids as the same name.... and I was told that this mistake alone can prevent your webpage from printing what it's supposed to properly.-->
 </div>
 
-<br>
+    <br>
+
+<h6>Mortgage Calculator</h6>
+
+    <br>
 
 <div>
     <label for="homeMarketValue">Pick Your Home's Estimated Market Value: $</label>
     <input type="number" id="homeMarketValue" placeholder="0" required>
-    <button onclick="submitHomeMarketValue()">Submit Your Home's Estimated Market Value</button>
+    <!--<button onclick="submitHomeMarketValue()">Submit Your Home's Estimated Market Value</button>--><!--I knew it! I had a feeling that writing all of these buttons in to intake and store user input for multiple pieces of data would be making things much more difficult....for JavaScript, and C# controller.-->
     <!--I'm going to have the website collect all of the user's inputs first, and make each aspect of what's required for the mortgage calculator to do its job a mandatory notion for each user input and button submission.<p></p>-->
 </div>
 
@@ -42,7 +46,7 @@
 <div>
     <label for="downPayment">How Much Cash You'd Like to Put Down on the Home: $</label>
     <input type="number" id="downPayment" placeholder="0" required>
-    <button onclick="submitHomeDownPayment()">Submit Your Intended Down Payment</button>
+    <!-- <button onclick="submitHomeDownPayment()">Submit Your Intended Down Payment</button> -->
 </div>
 
     <br>
@@ -50,7 +54,7 @@
 <div>
     <label for="loanAmount">What's the Loan Amount: $</label>
     <input type="number" id="loanAmount" placeholder ="0" required>
-    <button onclick="submitHomeLoanAmount()">Submit Desired Home Loan Amount</button>
+    <!-- <button onclick="submitHomeLoanAmount()">Submit Desired Home Loan Amount</button> -->
 </div>
 
     <br>
@@ -58,7 +62,7 @@
 <div>
     <label for="interestRate">Estimated Interest Rate: %</label>
     <input type="number" id="interestRate" placeholder="0" required>
-    <button onclick="submitInterestRate()">Submit Interest Rate</button>
+    <!-- <button onclick="submitInterestRate()">Submit Interest Rate</button> -->
 </div>
 
     <br>
@@ -76,14 +80,14 @@
 <div>
     <label for="loanTerm">What's the Term Length of the Loan: </label>
     <input type="number" id="loanTerm" placeholder="0" required>Years<!--This works alright if you want to place the unit of measure for the input quantity to the right of the input box, instead of before it, to the left, in the label section.-->
-    <button onclick="submitLoanTerm()">Submit Loan Term</button>
+    <!-- <button onclick="submitLoanTerm()">Submit Loan Term</button> -->
 </div>
 
     <br>
 
 <div>
-    <label for="loanStartDate">When's the Loan's Start Date:</label>
-    <select id="loanStartDate" name="Month" required>
+    <label for="loanStartMonth">When's the Loan's Start Date:</label>
+    <select id="loanStartMonth" name="Month" required>
         <option value="January">January</option>
         <option value="February">February</option>
         <option value="March">March</option>
@@ -97,7 +101,7 @@
         <option value="November">November</option>
         <option value="December">December</option>
     </select>
-    <input type="number" id="loanStartDate" placeholder="2026" required>
+    <input type="number" id="loanStartYear" placeholder="2026" required><!--All user input functions must retain their own unique id, just like the span ids do. Here, I'd set the ids of both the input and select functions to the same thing, which was 'loanStartDate', so I changed them to be different, in a way that clearly identifies what they are.-->
 </div>
 
     <br>
@@ -105,8 +109,68 @@
 <div>
     <label for="propertyTaxes">Estimated Annual Property Taxes: $</label><!--I'm going to actually make a whole other full stack development project that can be a little more precise with home mmortage related notions and values are actually calculated.... and not just leave them as simple inputs for the user.-->
     <input type="number" id="propertyTaxes" placeholder="0" required>
-    <button onclick="submitPropertyTaxes()">Submit Estimated Annual Property Taxes</button>
+    <!-- <button onclick="submitPropertyTaxes()">Submit Estimated Annual Property Taxes</button> -->
 </div>
+
+    <br>
+
+<div>
+    <label for="privateMortgageInsurance">Private Mortgage Insurance: $</label>
+    <input type="number" id ="privateMortgageInsurance" placeholder="0" required>
+    <!-- <button onclick="submitPrivateMortgageInsurance()">Submit Private Mortgage Insurance</button> -->
+</div>
+
+    <br>
+
+<div>
+    <label for="homeOwnerInsurance">Home Owner's Insurance: $</label>
+    <input type="number" id="homeOwnerInsurance" placeholder="0" required>
+    <!--<button onclick="submitHomeOwnerInsurance()">Submit Home Owner's Insurance</button> -->
+</div>
+
+    <br>
+
+<div>
+    <label for="hOA">HOA Fees: $</label>
+    <input type="number" id="hOA" placeholder="0" required>
+    <!-- <button onclick="submitHOA()">Submit HOA</button> -->
+</div>
+
+    <br>
+
+<div>
+    <label for="loanType">Loan Type</label>
+    <select id="loanType" name="typeOfLoan">
+        <option value="Conventional">Conventional</option>
+        <option value="FHA">FHA</option>
+        <option value="VA">VA</option>
+        <option value="USDA">USDA</option>
+    </select>
+</div>
+
+    <br>
+
+<div>
+    <button onclick="calculateMortgage()">Calculate Mortgage</button>
+</div>
+
+    <br>
+
+<h1>Mortgage Repayment Summary</h1>
+
+    <br>
+
+<p>Total Monthly Payment: <!--What is DOM manipulation?-->
+    <span id="monthlyPaymentResult"></span>
+</p>
+
+<p>Monthly Taxes Paid:
+    <span id="monthlyTaxResult"></span>
+</p>
+
+<p>Monthly Home Insurance:
+    <span id="monthlyInsuranceResult"></span>
+</p>
 
     <script src="wwwroot/js/site.js"></script>
 </body>
