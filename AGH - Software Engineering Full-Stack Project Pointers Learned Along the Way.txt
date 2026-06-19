@@ -1,6 +1,23 @@
 AGH - Software Engineering Full-Stack Project Pointers Learned along the Way
 
 > In order to get this website up and running properly with its intended functionality; must load the backend programs first (preferably through Visual Studio Community), and get them running.... then load up the html program via visual studio code and ensure that the live server extension is selected for use.... this makes it easier to see what you're doing as you're working. Loading the html page first still opened a new webpage in the browser, and it could run on its own, but it was connected to the backend port address, and therefore had no connectivity to all of its programming. The webpage still didn't retain its functionality even after it was connected to the backend port address, which was surprising.
+	* fetch('https://localhost:44324/api/finance/double',//this is where JavaScript is looking to connect the frontend local server host with the backend server host.... it already knows that the frontend server host is, 	'http://127.0.0.1:5500', but at no point before this first fetch function in my currently written JavaScript programming is it ever seeking out that same backend server address, because I haven't given it any reason to yet.... 	it only does so for each fetch function I've written into it with the intent that those functions intake the inputs from the user interface, may also then convert them if necessary, before sending them back to my backend program 	in C#.
+	*In my C# controller, I've already created a program file (cs file) that acts as a configuration for the backends' local server host startup, and within it, it's already got the frontend local server host's address plugged into 	it, so it knows what it is when it connects to it.
+    {
+        method: 'POST',
+        headers:
+        {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({number: parseInt(value)})
+
+    })
+    .then(response => response.json())
+    .then(data =>
+    {
+        document.getElementById("doubleResult").innerText = data;
+    })
+    .catch(error => console.error('Error:', error));
 
 > Ensure that whenever there's frontend projects being connected with backend ones, make sure that there's scripting in the appropriate places which tells each project file what the address of the other's port is.... else, they'll never connect with each other.
 
@@ -18,4 +35,10 @@ services.AddCors(options =>
 });
 
 > Always make sure that when crafting multiple functions inside of HTML, that if span ids are used, they must all retain different names from each other, or else there may very likely be errors thrown that you won't see or detect at compile time or at runtime.
+
+> So, when witnessing a runtime error in JavaScript that reads something like this: site.js:74:93. It means; line 74, character 93. Not line 74 : line 93. Think of it like; line : column. So, 74:93 means; "On line 74, the 93rd character." Based on my current experience with JavaScript, this tends to mean look of the runtime error on line 74, at it's 93rd character..... but more to the point here -- the 93rd character in this instance represented the last character of line 74.... and line 74 represented the first line of code in a block of programming that was utilizing DOM (document object model) manipulation, whereby it would do as follows; document.getElementById("monthlyPaymentResult").innerText = `$${data.monthlyPayment.toFixed(2)}`; and I'm pretty sure that semicolon on that line was the last and 93rd character of it. It was trying to retrieve data; document.getElementById("monthlyParymentResult") -- this an example of how JavaScript attempts to find something.... and then the .innertext = `$${data.monthlyPayment.toFixed(2)}`; is what JavaScript can do to convert that data it's found.... but the reason for why the error showed up in the first place is likely because when JavaScript was attempting to retrieve data here, it was given something that was undefined.... and this could have been due to the way I structured the UI, via html and JavaScript, by way of it requiring a valid input.... whereas if it's left blank, it gets treated as undefined, even if the placeholder is defined as 0 in html.
+	* In many cases regarding inputting otherwise undefined intakes on the user interface, because I didn't write some kind of error handling script to negate the error from being thrown when the program is being executed, JavaScript, 	in this case mentioned above, will treat the input as NaN (Not a Number), since it was undefined.
+	*.toFixed(2) represents the number of spaces behind the decimal the converted value will display.
+
+> Often times, I'll get this ambiguous error at runtime in JavaScript called, 'Error 400' Bad Request. In a broad sense, this error can mean a number of different things, and may show up for a number of different reasons, but it's to realize that getting such an error doesn't necessarily mean that your code is broken. It's more likely due to a sever receiving data that it doesn't 'like' or accept.... which again can be for a number of different reasons.... and because of my first final project (the finance one), which is full-stack based.... it's likely due to JavaScript receiving one or more inputs on the user interface that it classified as undefined or as NaNs.... which is the first major issue that this error doesn't necessarily disclose, and then by the time this undefined input gets sent back to my controller in C#, C# doesn't know what to do with it, because JavaScript essentially didn't know what to do with it either, there fore, the server returns an Error 400 'Bad Request'. So, check your inputs before frontend execution..... check JavaScript syntax as well as html syntax, and then C# syntax as a last resort, but in a worst case scenario regarding this sort of instance, it may not be a bad idea to restart both the frontend and backend local host servers.
 

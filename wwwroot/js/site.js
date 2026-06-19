@@ -50,14 +50,14 @@ function calculateMortgage()//actually, this is an object made in javascript....
             downPayment: parseFloat (document.getElementById("downPayment").value),//naming the variable here in javascript the same thing as what it's retrieving from the input id attribute name (that's already been written in my html component) makes this so much simpler.
             loanAmount: parseFloat (document.getElementById("loanAmount").value),
             interestRate: parseFloat (document.getElementById("interestRate").value),
-            loanTerm: parseFloat (document.getElementById("loanTerm").value),
+            loanTerm: parseInt (document.getElementById("loanTerm").value),
             propertyTaxes: parseFloat (document.getElementById("propertyTaxes").value),//guessing that the home renovation input from my html file wasn't written in here within javascript because it wasn't important? Or enough to be considered as a worthy part of this whole mortgage calculation?
-            pmi: parseFloat (document.getElementById("privateMortgageInsurance").value),
+            pmi: parseFloat (document.getElementById("privateMortgageInsurance").value),//parseFloat because the input intakes numerical values.
             homeInsurance: parseFloat (document.getElementById("homeOwnerInsurance").value),
             hoa: parseFloat (document.getElementById("hOA").value),
-            loanStartMonth: parseFloat (document.getElementById("loanStartMonth").value),
-            loanStartYear: parseFloat (document.getElementById("loanStartYear").value),
-            loanType: parseFloat (document.getElementById("loanType").value),
+            loanStartMonth: document.getElementById("loanStartMonth").value,//these values are reference based -- they're strings, and therefore don't need to be parsed as numbers.
+            loanStartYear: parseInt (document.getElementById("loanStartYear").value),
+            loanType: document.getElementById("loanType").value,//for values that don't need to be parsed, remove the extra set of parentheses.
     }
     fetch('https://localhost:44324/api/finance/calculateMortgage',
     {
@@ -71,10 +71,10 @@ function calculateMortgage()//actually, this is an object made in javascript....
     .then(response => response.json())
     .then(data =>
     {
-        document.getElementById("monthlyPaymentResult").innerText = data//console.log(data);//This prints the results of the data to the console.
-        document.getElementById("monthlyTaxResult").innerText = data
-        document.getElementById("monthlyInsuranceResult").innerText = data
-    })
+        document.getElementById("monthlyPaymentResult").innerText = `$${data.monthlyPayment.toFixed(2)}`;//console.log(data);//This prints the results of the data to the console. This is actually an ideal first step to executing as a matter of debugging everything before it reaches the UI.... use the console.log function to see what comes up in the console of the UI before it gets printed to the UI itself.... presumably, this saves time. Think of it like making certain that the backend is returning the correct data (always do this when building APIs).
+        document.getElementById("monthlyTaxResult").innerText = `$${data.monthlyTaxes.toFixed(2)}`;//this block of code was giving me errors before at runtime.... but now they're not and I'm not sure why -- was it because I restarted VS code and VS community? I was getting an error of 400 'bad request' before, relentlessly....
+        document.getElementById("monthlyInsuranceResult").innerText = `$${data.monthlyInsurance.toFixed(2)}`;//alright so error 400 bad request broadly translates to 'the server recieved a reuest, but didn't like the data it recieved.' That would make sense in a variety of different coding or syntactic contexts, but in the case of my app as it is right now, likely means that something was left undefined, before it got sent over to the server, thus resulting in an erorr 400 bad request.
+    })//.elaborating on this error a little further; there's such a notion as NaN which is an acronym for 'Not a Number'. If my loan amouint, for example, is left blank, json interprets this as NaN, and json doesn;t support NaN. when it gets to ASP.NET, it will try to deserialize this input into C#.... and the property deifnition I wrote for the loan amount: public double LoanAmount { get; set; }, and this fails.
     .catch(error =>
         console.error('Error:', error));
 }

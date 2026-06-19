@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <h>AGH - Finance Demo App #01</h>
+    <h1>AGH - Finance Demo App #01</h1><!--Html still renders whatever's inside of <h><h> but it should really be <h1> - <h6>-->
     <br>
     <br>
     <br>
@@ -30,7 +30,7 @@
 
     <br>
 
-<h6>Mortgage Calculator</h6>
+<h1>Mortgage Calculator</h1>
 
     <br>
 
@@ -160,11 +160,19 @@
 
     <br>
 
-<p>Total Monthly Payment: <!--What is DOM manipulation?-->
+<p>Total Monthly Payment (Including Escrow [Property Taxes + Home Owner's Insurance], PMI, and HOA): <!--What is DOM manipulation?--><!--DOM = Document Object Model. <span id="monthlyPaymentResult"></span> becomes an object in memory. JavaScript can find it: document.getElementById("monthlyPaymentResult") and modify it: .innerText = "$1897.27" That's DOM manipulation.-->
     <span id="monthlyPaymentResult"></span>
 </p>
 
-<p>Monthly Taxes Paid:
+    <br>
+
+<h2>Breakdown of Monthly Payment</h2>
+
+    <br>
+<p>Monthly Principal:
+    <span id="monthlyPrincipalResult"></span>
+</p>
+<p>Monthly Taxes:
     <span id="monthlyTaxResult"></span>
 </p>
 
@@ -172,6 +180,81 @@
     <span id="monthlyInsuranceResult"></span>
 </p>
 
+<p>Monthly Private Mortgage Insurance:
+    <span id="monthlyPMIResult"></span>
+</p>
+
+<p>Monthly Home Owner's Association Fees:
+    <span id="monthlyHOAResult"></span>
+</p>
+    <br>
+
+<h2>Broader Breakdown (Annual)</h2>
+  
+<br>
+
+<p>Total Annual Payment  (Including Escrow [Property Taxes + Home Owner's Insurance], PMI, and HOA):
+    <span id="totalAnnualPaymentResult"></span>
+</p>
+
+<p>Annual Principal:
+    <span id="annualPrincipalResult"></span>
+</p>
+
+<p>Annual Taxes:
+    <span id="annualTaxResult">
+    </span>
+</p>
+
+<p>Annual Home Insurance:
+    <span id="annualInsuranceResult"></span>
+</p>
+
+<p>Annual Private Mortgage Insurance:
+    <span id="annualPMiResult"></span>
+</p>
+
+<p>Annual Home Owner's Association Fees:
+    <span id="annualHOAResult"></span>
+</p>
+
+    <br>
+
+<h2>Even Broader Breakdown (Overall)</h2>
+
+<p> Total Down Payment:_______________________
+    <span id="totalDownPaymentResult"></span>
+    Total Down Payment % of Home's Current Market Value:
+    <span id="totalDownPaymentPercentageResult"></span>
+</p>
+
+<p>Total Loan Principal:
+    <span id="totalPrincipalResult"></span>
+</p>
+
+<P>Total Loan Interest:
+    <span id="totalLoanInterestResult"></span>
+</P>
+
+<p>Total Taxes:
+    <span id="totalTaxResult"></span>
+</p>
+
+<p>Total Owner's Insurance:
+    <span id="totalInsuranceResult"></span>
+</p>
+
+<p>Total Home Owner's Association Fees:
+    <span id="totalHOAResult"></span>
+</p>
+
+<p>Total Number of Monthly Payments:
+    <span id="totalNumberMonthlyPaymentsResult"></span>
+</p>
+
+<P>Total Payment Amount During Entirety of Loan:
+    <span id="totalAmountPaidDuringLoanTermResult"></span>
+</P>
     <script src="wwwroot/js/site.js"></script>
 </body>
 </html>
